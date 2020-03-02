@@ -1,0 +1,14 @@
+#ifndef HABITAT_H
+#define HABITAT_H
+#include "vector"
+#include "string"
+#include "system.h"
+
+using namespace std;
+
+class Habitat :  public System {
+public :
+    unsigned int cabins = 1;
+};
+
+#endif // HABITAT_H
