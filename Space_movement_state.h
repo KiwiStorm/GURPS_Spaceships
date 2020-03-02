@@ -120,13 +120,13 @@ public:
 		turn_time = 20;
 	}
 
-	Space_movement_state(point p, vect v, vect a, ld m, ll t = 20) 
+	Space_movement_state(point p, vect v, vect a, ld mx_spd, ll t = 20) 
 	{
 		posititon = p;
 		acceleration = a;
 		velocity = v;
 		turn_time = t;
-		max_speed = m;
+		max_speed = mx_spd;
 	}
 
 	ld get_acceleration_g()
@@ -166,7 +166,7 @@ public:
 
 	void next_turn()
 	{
-		velocity.move_point(posititon);
+		(velocity * turn_time).move_point(posititon);
 		vect acc_mov = acceleration;
 		ld l = 0, r = turn_time;
 		acc_mov.normalize();
