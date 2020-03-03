@@ -3,35 +3,32 @@
 #include "vector"
 #include "string"
 #include "system.h"
-#include "cargohold.h"
-#include "ship.h"
+
+
 
 
 using namespace std;
 
 
 class Ship;
+class ShipBuilder;
 
 class Hull  {
 public :
-    Hull(unsigned  int SM,unsigned int HULLTYPE) :  sm(SM), hullType(HULLTYPE) {
+    Hull(Ship* PTR, unsigned  int SM,unsigned int HULLTYPE) :  sm(SM), hullType(HULLTYPE), pship(PTR) {
         for(int i = 0;i < 7;i++) {
-            if(hullType == 3 && i == 0) {
-                systems[i] = nullptr;
-            }
-            else {
-                systems[i] = new CargoHold(sm,1);
-            }
+            systems[i] = nullptr;
         }
 }
     System* systems[7];
-    Ship* pship;
-    unsigned int sm;
-protected :
+    Ship* parentPTR() {return this->pship;}
 
+protected :
+    unsigned int sm;
     unsigned int dr = 0;
     vector<string> hull_type = {"Front","Central","Rear"};
     unsigned int hullType;
-
+    Ship* pship;
+    friend ShipBuilder;
 };
 #endif // HULL_H
