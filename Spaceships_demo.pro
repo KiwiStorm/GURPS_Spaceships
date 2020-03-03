@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    main.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,9 +25,20 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     cargohold.h \
-    gamesettings.h \
     globalfunctions.h \
     habitat.h \
     hull.h \
     ship.h \
-    system.h
+    system.h \
+    cargohold.h \
+    globalfunctions.h \
+    habitat.h \
+    hull.h \
+    ship.h \
+    system.h \
+    Space_movement_state.h \
+    builder.h \
+    configs.h
+
+DISTFILES += \
+    README.md
