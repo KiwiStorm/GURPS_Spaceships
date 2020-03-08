@@ -38,7 +38,8 @@ HEADERS += \
     system.h \
     Space_movement_state.h \
     builder.h \
-    configs.h
+    configs.h \
+    game.h
 
 DISTFILES += \
     README.md

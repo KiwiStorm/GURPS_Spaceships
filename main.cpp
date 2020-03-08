@@ -10,12 +10,11 @@
 #include "Space_movement_state.h"
 #include "system.h"
 
-
 //продаётся место дя вашего кода
 
 using namespace std;
 
-int main()
+ int main()
 {
     //Configs gm(7,0);
     //Ship test("Test", 5, 1);

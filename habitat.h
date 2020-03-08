@@ -3,8 +3,7 @@
 #include "vector"
 #include "string"
 #include "system.h"
-#include "globalfunctions.h"
-#include "ship.h"
+
 
 //вообще сырая система
 using namespace std;
