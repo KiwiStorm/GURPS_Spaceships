@@ -2,6 +2,7 @@
 #define SYSTEM_H
 #include "vector"
 #include "string"
+#include "globalfunctions.h"
 //#include "ship.h"
 
 
@@ -14,7 +15,7 @@ class Ship;
 class System {
 public :
     System(Ship* PTR) : pship(PTR) {}
-
+    virtual ~System();
     long long cost = 0;
 
     vector<string> system_status  = {"Undamaged","Disabled","Destroyed"};
@@ -24,6 +25,10 @@ public :
 
     unsigned int minimumTL = 7;
     bool requireSC = false;
+    unsigned workspacesRequired;
+
+    virtual string returnSystemType();
+
 
 };
 

@@ -3,7 +3,7 @@
 #include "vector"
 #include "string"
 #include "system.h"
-#include "globalfunctions.h"
+//#include "globalfunctions.h"
 
 //что-то сделать с типами данных, но пока всё работает
 
