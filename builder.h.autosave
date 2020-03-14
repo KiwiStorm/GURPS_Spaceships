@@ -23,7 +23,7 @@ Hull*   createHull(Ship* PTR, unsigned int hullType);
 Ship*   createShip(string NAME,unsigned int SM,unsigned int SHIPFORM);
 void    changeSystem(System *sys,string newSysName);//создаёт ненастроенную систему по переданному коду
 void    configureSystem(); //позволяет изменять настройки каждой отдельной ситемы
-
+                               
 };
 
 void  ShipBuilder::changeSystem(System *sys,string newSysName) {

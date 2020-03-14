@@ -11,25 +11,26 @@
 using namespace std;
 
 class Ship;
+class CrewMan;
 
 class System {
 public :
     System(Ship* PTR) : pship(PTR) {}
-    virtual ~System();
+
     long long cost = 0;
 
     vector<string> system_status  = {"Undamaged","Disabled","Destroyed"};
     unsigned int systemStatus = 0;
 
     Ship* pship;
-
+    CrewMan *mannedBy = nullptr;
     unsigned int minimumTL = 7;
     bool requireSC = false;
-    unsigned workspacesRequired;
+    unsigned int workspacesRequired = 0;
 
     virtual string returnSystemType();
 
-
+    virtual ~System();
 };
 
 #endif // SYSTEM_H

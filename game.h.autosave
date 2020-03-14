@@ -24,7 +24,7 @@ class Game {
     queue<Ship*> turnOrder = {};
 
 
-    void placeShips(Space_movement_state::point center, long double distance);
+   // void placeShips(Space_movement_state::point center, long double distance);
 };
 
 class BattleDispetcher : private Game {

@@ -4,11 +4,7 @@
 #include "string"
 #include "system.h"
 
-
-
-
 using namespace std;
-
 
 class Ship;
 class ShipBuilder;
