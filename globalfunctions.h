@@ -29,6 +29,9 @@ static int skillCheck(int bonus, int skill) { //0 - крит провал, 1 - �
 
 static long double gurpsScaling1(const long double baseValue,const  int cycles) { //для увеличения стоимости и большинства характеристик
     long double ans = baseValue;
+    if(cycles < 0) {
+        throw "WrongDataGS1";
+    }
     for(int i = 0;i < cycles;i++) {
         if(i % 2 == 0) {
             ans*= 10;
@@ -43,6 +46,9 @@ static long double gurpsScaling1(const long double baseValue,const  int cycles) 
 
 static long double gurpsScaling2(const long double baseValue,const  int cycles) {//для увеличения размера, пока пробный вариант, там сложнее всё
     long double ans = baseValue;
+    if(cycles < 0) {
+        throw "WrongData : GS2";
+    }
     for(int i = 0;i < cycles;i++) {
             ans*=3;
             ans/=2;

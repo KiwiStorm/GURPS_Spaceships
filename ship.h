@@ -3,6 +3,8 @@
 #include "vector"
 #include "string"
 #include "hull.h"
+#include "Space_movement_state.h"
+
 //#include "globalfunctions.h"
 
 using namespace std;
@@ -10,10 +12,11 @@ using namespace std;
 //добавлены не все функции и методы
 
 class ShipBuilder;
+class Player;
 
 class Ship  {
 public :
-    Ship(string NAME,unsigned int SM,unsigned int SHIPFORM) :   SM(SM), name(NAME), shipForm(SHIPFORM) {
+    Ship(string NAME,unsigned int SM,unsigned int SHIPFORM) :   SM(SM), name(NAME), shipForm(SHIPFORM), sms() {
         strenght = gurpsScaling2(200, SM-5);
         hitPoins = strenght;
         currentHP = hitPoins;
@@ -46,16 +49,16 @@ public :
         }
 
 }
-
-    unsigned int getSM() {return this->SM;}
+    Player *controledBy;
+    int getSM() {return this->SM;}
     void calculateCost();
     void addDeltaV(unsigned int amount) {deltaV+=amount;}
     void decreaseDeltaV(unsigned int amount) {deltaV-=amount;}
-
+    Space_movement_state sms;
     Hull* hulls[3] = {nullptr,nullptr,nullptr};
 
 protected :
-    unsigned int SM;
+    int SM;
 
     int currentHP;
 
@@ -66,7 +69,6 @@ protected :
     vector<string> ship_form = {"sphere","cylinder","streamlined","undefined"};
     unsigned int shipForm;
     bool isStreamlined;
-
 
     unsigned int htalth = 13;
     unsigned int strenght;
@@ -85,9 +87,9 @@ protected :
 void Ship::calculateCost() {
     this->cost = 0;
     for(int h;h <3;h++){
-    for(int i;i < 7;i++) {
-        if(this->hulls[h]->systems[i] == nullptr) {continue;}
-        this->cost+= this->hulls[h]->systems[i]->cost;
+        for(int i;i < 7;i++) {
+            if(this->hulls[h]->systems[i] == nullptr) {continue;}
+            this->cost+= this->hulls[h]->systems[i]->cost;
     }
     }
 }
