@@ -7,6 +7,9 @@
 
 using namespace std;
 
+typedef long long ll;
+typedef long double ld;
+
 static int roll3d6() {
     return rand() % 6 + rand() % 6 + rand() % 6 + 3;
 }
@@ -56,6 +59,98 @@ static long double gurpsScaling2(const long double baseValue,const  int cycles) 
     return ans;
 }
 
+struct point
+{
+	ld x, y, z;
+};
 
+struct vect : point
+{
+	vect() {}
+
+	vect(ld x, ld y, ld z)
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+
+	ld get_size()
+	{
+		return sqrt(x * x + y * y + z * z);
+	}
+
+	void normalize()
+	{
+		ld size = get_size();
+		x /= size;
+		y /= size;
+		z /= size;
+	}
+
+	void set_diriction(ld nx, ld ny, ld nz)
+	{
+		ld old_size = get_size();
+		x = nx;
+		y = ny;
+		z = nz;
+		set_size(old_size);
+	}
+
+	void set_size(ld sz)
+	{
+		ld temp_sz = get_size();
+		x *= sz / temp_sz;
+		y *= sz / temp_sz;
+		z *= sz / temp_sz;
+	}
+
+	static vect cross_product(const vect &v1, const vect &v2)
+	{
+		return { v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x };
+	}
+
+	static ld dot_product(const vect &v1, const vect &v2)
+	{
+		return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	}
+
+	void move_point(point &p)
+	{
+		p.x += x;
+		p.y += y;
+		p.z += z;
+	}
+
+	vect& operator*=(const int & a)
+	{
+		x *= a;
+		y *= a;
+		z *= a;
+		return *this;
+	}
+
+	vect& operator*(const int & a) const
+	{
+		vect res = *this;
+		res *= a;
+		return res;
+	}
+
+	vect& operator+=(const vect &v)
+	{
+		x += v.x;
+		y += v.y;
+		z += v.z;
+		return *this;
+	}
+
+	vect& operator+(const vect &v) const
+	{
+		vect res = *this;
+		res += v;
+		return res;
+	}
+};
 
 #endif // GLOBALFUNCTIONS_H
